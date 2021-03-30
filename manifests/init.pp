@@ -34,8 +34,8 @@ class samba (
   Hash                       $shares_definitions     = {},
   String                     $shares_template        = 'samba/shares.erb',
   ) {
-  case $::operatingsystem {
-    'RedHat', 'CentOS': {
+  case $facts['os']['name'] {
+    'RedHat', 'CentOS', 'Ubuntu', 'Debian': {
       contain samba::install
       contain samba::config
       contain samba::service
@@ -45,7 +45,7 @@ class samba (
       ~> Class['samba::service']
     }
     default: {
-      fail("${::operatingsystem} not supported")
+      fail("${facts['os']['name']} not supported")
     }
   }
 }
