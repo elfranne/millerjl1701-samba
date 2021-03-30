@@ -162,8 +162,8 @@ describe 'samba' do
     describe 'samba class without any parameters on Solaris/Nexenta' do
       let(:facts) do
         {
-          :family => 'Solaris',
-          :name   => 'Nexenta',
+          os: { family: 'Solaris' },
+          os: { name: 'Nexenta' }
         }
       end
 
