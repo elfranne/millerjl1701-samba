@@ -1,2 +1,2 @@
 ---
-{}
+samba::global_config::service_name: smb

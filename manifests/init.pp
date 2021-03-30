@@ -30,7 +30,7 @@ class samba (
   String                     $service_nmb_name       = 'nmb',
   Boolean                    $service_smb_enable     = true,
   Enum['running', 'stopped'] $service_smb_ensure     = 'running',
-  String                     $service_smb_name       = 'smb',
+  String                     $service_smb_name       = $::samba::global_config::service_name,
   Hash                       $shares_definitions     = {},
   String                     $shares_template        = 'samba/shares.erb',
   ) {

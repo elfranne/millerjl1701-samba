@@ -1,6 +1,7 @@
 ---
 
 samba::global_config:
+  service_name: smbd
   global:
     workgroup: 'SAMBA'
     security: 'user'
