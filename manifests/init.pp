@@ -27,15 +27,13 @@ class samba (
   String                     $package_name           = 'samba',
   Boolean                    $service_nmb_enable     = false,
   Enum['running', 'stopped'] $service_nmb_ensure     = 'stopped',
-  String                     $service_nmb_name       = 'nmb',
   Boolean                    $service_smb_enable     = true,
   Enum['running', 'stopped'] $service_smb_ensure     = 'running',
-  String                     $service_smb_name       = $::samba::global_config::service_name,
   Hash                       $shares_definitions     = {},
   String                     $shares_template        = 'samba/shares.erb',
   ) {
-  case $facts['os']['name'] {
-    'RedHat', 'CentOS', 'Ubuntu', 'Debian': {
+  case $facts['os']['family'] {
+    'RedHat', 'Debian': {
       contain samba::install
       contain samba::config
       contain samba::service
@@ -45,7 +43,7 @@ class samba (
       ~> Class['samba::service']
     }
     default: {
-      fail("${facts['os']['name']} not supported")
+      fail("${facts['os']['family']} not supported")
     }
   }
 }
