@@ -7,12 +7,12 @@ class samba::service {
 
   $service_nmb_name = $facts['os']['family'] ? {
     'RedHat' => 'nmb',
-    'Debian' => 'nmdb',
+    'Debian' => 'nmbd',
   }
 
   $service_smb_name = $facts['os']['family'] ? {
     'RedHat' => 'smb',
-    'Debian' => 'smdb',
+    'Debian' => 'smbd',
   }
 
   service { $service_nmb_name:
