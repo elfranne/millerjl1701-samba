@@ -16,14 +16,14 @@ class samba::service {
   }
 
   service { $service_nmb_name:
-    ensure     => $::samba::service_nmb_ensure,
-    enable     => $::samba::service_nmb_enable,
+    ensure     => $samba::service_nmb_ensure,
+    enable     => $samba::service_nmb_enable,
     hasstatus  => true,
     hasrestart => true,
   }
   service { $service_smb_name:
-    ensure     => $::samba::service_smb_ensure,
-    enable     => $::samba::service_smb_enable,
+    ensure     => $samba::service_smb_ensure,
+    enable     => $samba::service_smb_enable,
     hasstatus  => true,
     hasrestart => true,
   }

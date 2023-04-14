@@ -31,7 +31,7 @@ class samba (
   Enum['running', 'stopped'] $service_smb_ensure     = 'running',
   Hash                       $shares_definitions     = {},
   String                     $shares_template        = 'samba/shares.erb',
-  ) {
+) {
   case $facts['os']['family'] {
     'RedHat', 'Debian': {
       contain samba::install
