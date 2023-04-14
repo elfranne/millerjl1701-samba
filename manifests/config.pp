@@ -5,7 +5,7 @@
 class samba::config {
   assert_private('samba::config is a private class')
 
-  $config = $::samba::global_config
+  $config = $samba::global_config
   $definitions = $samba::shares_definitions
 
   concat { "${samba::config_dir}/${samba::config_file}":

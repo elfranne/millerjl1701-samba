@@ -5,7 +5,7 @@
 class samba::install {
   assert_private('samba::install is a private class')
 
-  package { $::samba::package_name:
-    ensure => $::samba::package_ensure,
+  package { $samba::package_name:
+    ensure => $samba::package_ensure,
   }
 }
