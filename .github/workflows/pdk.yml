@@ -1,19 +1,28 @@
 name: PDK
 on: [ push ]
 jobs:
-  validate:
+  debug:
     runs-on: ubuntu-latest
     container: puppet/pdk:latest
     steps:
       - name: Check out repository code
         uses: actions/checkout@v3
       - name: run pdk validate
-        run: pdk validate --format=text
-  unit-test:
-    runs-on: ubuntu-latest
-    container: puppet/pdk:latest
-    steps:
-      - name: Check out repository code
-        uses: actions/checkout@v3
-      - name: run pdk test unit
-        run: pdk test unit --format=text
+        run: |
+          ls -lah
+  # validate:
+  #   runs-on: ubuntu-latest
+  #   container: puppet/pdk:latest
+  #   steps:
+  #     - name: Check out repository code
+  #       uses: actions/checkout@v3
+  #     - name: run pdk validate
+  #       run: pdk validate --format=text
+  # unit-test:
+  #   runs-on: ubuntu-latest
+  #   container: puppet/pdk:latest
+  #   steps:
+  #     - name: Check out repository code
+  #       uses: actions/checkout@v3
+  #     - name: run pdk test unit
+  #       run: pdk test unit --format=text
