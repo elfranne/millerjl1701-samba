@@ -1,0 +1,15 @@
+name: PDK
+on: [ push ]
+jobs:
+  pdk:
+    runs-on: ubuntu-latest
+    container: puppet/pdk:latest
+    timeout-minutes: 10
+    steps:
+      - name: Check out repository code
+        uses: actions/checkout@v3
+      - name: run pdk validate
+        run: |
+          apt-get update && export DEBIAN_FRONTEND=noninteractive
+          apt-get -y install --no-install-recommends build-essential
+          pdk validate --format=text --debug
