@@ -4,6 +4,7 @@ jobs:
   pdk:
     runs-on: ubuntu-latest
     container: puppet/pdk:latest
+    timeout-minutes: 10
     steps:
       - name: Check out repository code
         uses: actions/checkout@v3
