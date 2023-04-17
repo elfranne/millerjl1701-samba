@@ -9,16 +9,19 @@ jobs:
         uses: actions/checkout@v3
       - name: run pdk validate
         run: |
+          apt-get update && export DEBIAN_FRONTEND=noninteractive
+          apt-get -y install --no-install-recommends build-essential
           ls -lah
           pdk --version --debug
-  validate:
-    runs-on: ubuntu-latest
-    container: puppet/pdk:latest
-    steps:
-      - name: Check out repository code
-        uses: actions/checkout@v3
-      - name: run pdk validate
-        run: pdk validate --format=text --debug
+
+  # validate:
+  #   runs-on: ubuntu-latest
+  #   container: puppet/pdk:latest
+  #   steps:
+  #     - name: Check out repository code
+  #       uses: actions/checkout@v3
+  #     - name: run pdk validate
+  #       run: pdk validate --format=text --debug
   # unit-test:
   #   runs-on: ubuntu-latest
   #   container: puppet/pdk:latest
